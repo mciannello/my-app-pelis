@@ -1,5 +1,5 @@
-import axios from "axios";
-
+// import axios from "axios";
+import swAlert from '@sweetalert/with-react';
 function Login(){
 
     const submitHandler= e =>{
@@ -12,24 +12,44 @@ function Login(){
         const regexEmail =/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
        
         if (email==='' || password===''){
-            console.log('los campos no pueen estar vacios')
+            swAlert(
+                <div>
+                    <h2>Los campos no pueden estar vacios</h2>
+                    <p>Debes ingresar los datos correspondiente para ingresar</p>
+                </div>
+            )            
             return;
         }
 
         if(email!=='' && !regexEmail.test(email)){
-            console.log('Debes escribir una dire valida')
+            swAlert(
+                <div>
+                    <h2>Dirección inválida</h2>
+                    <p>Debes ingresar dirección de correo real</p>
+                </div>
+            )                    
             return;
         }
         if(email!=='mciannello@gmail.com'|| password!=='react'){
-            console.log('Credenciales inválidas');
+            swAlert(
+               <h2>Credenciales Inválidas</h2>
+            )   ;      
             return;
         }
-        console.log('estamos listos para enviar la info')
-        // axios
-        // .post('url donde hace la peticion',{email, password})
-        // .then(res=>{
-        //     console.log(res.data);
-        // })
+
+        axios
+        .post('https://challenge-react.alkemy.org',{email, password})
+        .then(res=>{
+            swAlert(
+             <h2>Perfecto, ingresaste correctamente!</h2>
+            )         
+        const tokenRecibido = res.data.token;
+        //  --> Se almacena el token en local storge
+        localStorage.setItem('token', tokenRecibido);
+
+        
+        })
+
     }
 return (
     <>
