@@ -1,3 +1,5 @@
+import axios from "axios";
+
 function Login(){
 
     const submitHandler= e =>{
@@ -23,7 +25,11 @@ function Login(){
             return;
         }
         console.log('estamos listos para enviar la info')
-
+        // axios
+        // .post('url donde hace la peticion',{email, password})
+        // .then(res=>{
+        //     console.log(res.data);
+        // })
     }
 return (
     <>
