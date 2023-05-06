@@ -33,7 +33,8 @@ function Login(){
         if(email!=='mciannello@gmail.com'|| password!=='react'){
             swAlert(
                 <h2>Credenciales Inválidas</h2>
-            )   ;      
+            )   ;   
+               
             return;
         }
 
@@ -49,20 +50,24 @@ function Login(){
 
         
         // })
+    // let token= localStorage.getItem('token');
 
     }
 return (
-    <div className="container-sm">
-    <h2>Formulario de Login</h2>
-    <form onSubmit={submitHandler} className="mb-3">
-        <label className="form-label"> Correo Electrónico:</label>
-        <input type="text" name="email" className="form-control"/>
-        <label className="form-label"> Contraseña: </label>
-        <input type="password" name="password" className="form-control"/>
-    <br/>
-    <button type="submit" className="btn btn-info rounded-pill px-3 col-3 ">Ingresar</button>
-    </form>
-    </div>
+    <>
+    {/*token && <Navigate to="listado"  */}
+        <div className="container-sm">
+        <h2>Formulario de Login</h2>
+        <form onSubmit={submitHandler} className="mb-3">
+            <label className="form-label"> Correo Electrónico:</label>
+            <input type="text" name="email" className="form-control"/>
+            <label className="form-label"> Contraseña: </label>
+            <input type="password" name="password" className="form-control"/>
+        <br/>
+        <button type="submit" className="btn btn-info rounded-pill px-3 col-3 ">Ingresar</button>
+        </form>
+        </div>
+    </>
 )
 }
 
