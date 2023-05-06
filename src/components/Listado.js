@@ -19,17 +19,24 @@ return(
     {/* {!token && <Navigate to="/"/>} */}
     <div className="row">
         {/* Estructura base */}
-        <div className="col-3">
-            <div className="card" style={{width: '18rem'}}>
-            <img src="..." className="card-img-top" alt="..."/>
-            <div className="card-body">
-            <h5 className="card-title">Peli 1</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <Link to="/" className="btn btn-primary">Ver detalle</Link>
-            </div>
-        </div>
-    </div>
-</div>
+        {
+            movieList.map((oneMovie, idx) =>{
+                return(
+                    <div className="col-3" key={idx}>
+                                <div className="card" style={{width: '18rem'}}>
+                                <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} className="card-img-top" alt="..."/>
+                                <div className="card-body">
+                                <h5 className="card-title">{oneMovie.title}</h5>
+                                <p className="card-text">{oneMovie.overview.substring(0,120)}...</p>
+                                <Link to="/" className="btn btn-primary">Ver detalle</Link>
+                                </div>
+                            </div>
+                    </div>
+                    
+                )
+            })
+        }
+     </div>   
 </>
 )
 }
