@@ -23,10 +23,10 @@ return(
             movieList.map((oneMovie, idx) =>{
                 return(
                     <div className="col-3" key={idx}>
-                                <div className="card" style={{width: '18rem'}}>
+                                <div className="card my-4" style={{width: '18rem', maxHeight:'50rem'}}>
                                 <img src={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`} className="card-img-top" alt="..."/>
                                 <div className="card-body">
-                                <h5 className="card-title">{oneMovie.title}</h5>
+                                <h5 className="card-title">{oneMovie.title.substring(0,30)}...</h5>
                                 <p className="card-text">{oneMovie.overview.substring(0,120)}...</p>
                                 <Link to="/" className="btn btn-primary">Ver detalle</Link>
                                 </div>

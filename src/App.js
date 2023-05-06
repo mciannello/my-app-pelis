@@ -16,7 +16,7 @@ import './css/App.css'
 function App  () {
 
   return (
-  <div className="container mt-3">
+  <div className="container-fluid">
     <Header />
     <Routes>
       <Route path="/" element={ <Login /> }/>
