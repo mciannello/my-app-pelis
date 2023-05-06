@@ -1,15 +1,15 @@
-// import axios from "axios";
+import axios from "axios";
 import swAlert from '@sweetalert/with-react';
 function Login(){
 
     const submitHandler= e =>{
         e.preventDefault();
-       
+        
         // capturo los valores de los inputs
         const email = e.target.email.value;
         const password = e.target.password.value;
         // regex emailjavaScript - validar que el mail este bien escrito
-        const regexEmail =/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        const regexEmail =/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
        
         if (email==='' || password===''){
             swAlert(
@@ -32,42 +32,37 @@ function Login(){
         }
         if(email!=='mciannello@gmail.com'|| password!=='react'){
             swAlert(
-               <h2>Credenciales Inválidas</h2>
+                <h2>Credenciales Inválidas</h2>
             )   ;      
             return;
         }
 
-        axios
-        .post('https://challenge-react.alkemy.org',{email, password})
-        .then(res=>{
-            swAlert(
-             <h2>Perfecto, ingresaste correctamente!</h2>
-            )         
-        const tokenRecibido = res.data.token;
-        //  --> Se almacena el token en local storge
-        localStorage.setItem('token', tokenRecibido);
+        // axios
+        // .post('https://localhost:3000',{email, password})
+        // .then(res=>{
+        //     swAlert(
+        //      <h2>Perfecto, ingresaste correctamente!</h2>
+        //     )         
+        // const tokenRecibido = res.data.token;
+        // //  --> Se almacena el token en local storge
+        // localStorage.setItem('token', tokenRecibido);
 
         
-        })
+        // })
 
     }
 return (
-    <>
+    <div className="container-sm">
     <h2>Formulario de Login</h2>
-    <form onSubmit={submitHandler}>
-        <label>
-            <span>Correo Electrónico:</span>  <br/>
-        <input type="text" name="email"/>
-        </label>
-        <br/>
-        <label>
-        <span>Contraseña:</span>  <br/>
-        <input type="password" name="password"/>
-        </label>
-        <br/>
+    <form onSubmit={submitHandler} className="mb-3">
+        <label className="form-label"> Correo Electrónico:</label>
+        <input type="text" name="email" className="form-control"/>
+        <label className="form-label"> Contraseña: </label>
+        <input type="password" name="password" className="form-control"/>
+    
     <button type="submit">Ingresar</button>
     </form>
-    </>
+    </div>
 )
 }
 

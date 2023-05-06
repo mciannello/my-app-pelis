@@ -1,9 +1,33 @@
-import './App.css';
+// Librerias
+import { Routes, Route } from "react-router-dom";
+
+// Componentes
+import Contacto from './components/Contacto';
+import Listado from './components/Listado';
 import Login from './components/Login';
-function App() {
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+// Estilos
+import './css/bootstrap.min.css'
+import './css/App.css'
+
+
+
+function App  () {
+
   return (
- <Login/>
-  );
+  <div>
+    <Header />
+    <Routes>
+      <Route path="/" element={ <Login /> }/>
+      <Route path="listado"  element={ <Listado /> }/>
+      <Route path="contacto"  element={ <Contacto /> }/>
+    </Routes>
+    <Footer/>
+    </div>
+  
+    
+  )
 }
 
-export default App;
+export default App
