@@ -59,8 +59,8 @@ return (
         <input type="text" name="email" className="form-control"/>
         <label className="form-label"> Contraseña: </label>
         <input type="password" name="password" className="form-control"/>
-    
-    <button type="submit">Ingresar</button>
+    <br/>
+    <button type="submit" className="btn btn-info rounded-pill px-3 col-3 ">Ingresar</button>
     </form>
     </div>
 )
