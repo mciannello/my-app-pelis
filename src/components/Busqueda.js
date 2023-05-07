@@ -1,16 +1,26 @@
+import { useNavigate } from 'react-router-dom';
 import swAlert from '@sweetalert/with-react';
 
 function Busqueda (){
+    // me permite navega a resultados a partir del bo´ton
+    const history=useNavigate();
     const submitHandler= e =>{
         // no permite quese refresque la página
         e.preventDefault();
         // capturo lo que se escribe en el input- el keyword me toma todo el elemento, el value toma el valor que se ingresa
         const keyword= e.currentTarget.keyword.value.trim();
-        console.log(keyword);
+        
+        // console.log(keyword);
     if (keyword.length < 4){
         swAlert(<h4>Debes escribir una palabra clave.</h4>);
     }else if(keyword <4){
         swAlert(<h2>Tienes ques escribir más de 4 caracteres</h2>);
+    }else{
+        // Limpio la consola
+        e.currentTarget.keyword.value='';
+        // Redirecciono guardando la palabra clave
+        history(`/resultados?keyword=${keyword}`);
+        
     }
     }
 
