@@ -1,10 +1,13 @@
 // falta el navigate
-import {Link} from 'react-router-dom';
+import {Link, Navigate} from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
+import swAlert from '@sweetalert/with-react';
+
 function Listado(){
-    // let token= localStorage.getItem('token');
+    let token= sessionStorage.getItem('token');
     const [movieList, setMovieList] =useState([]);
+    
     useEffect(()=>{
         const endPoint='https://api.themoviedb.org/3/discover/movie?api_key=27bb5143a45c245d456e887782d5d662&language=es-ES&page=1';
         axios.get(endPoint)
@@ -12,11 +15,15 @@ function Listado(){
             const apiData=response.data
             setMovieList(apiData.results);
         })
+        // catch captura los errores
+        .catch(error=>{
+            swAlert(<h2>Hubo errores, intenta más tarde.</h2>)
+        })
     }, [setMovieList]);
-    console.log(movieList)
+    // console.log(movieList)
 return(
     <>
-    {/* {!token && <Navigate to="/"/>} */}
+    {!token && <Navigate to="/"/>}
     <div className="row">
         {/* Estructura base */}
         {
@@ -28,7 +35,7 @@ return(
                                 <div className="card-body">
                                 <h5 className="card-title">{oneMovie.title.substring(0,30)}...</h5>
                                 <p className="card-text">{oneMovie.overview.substring(0,120)}...</p>
-                                <Link to="/" className="btn btn-primary">Ver detalle</Link>
+                                <Link to={`/detalle?movieID=${oneMovie.id}`} className="btn btn-primary">Ver detalle</Link>
                                 </div>
                             </div>
                     </div>

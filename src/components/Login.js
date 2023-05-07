@@ -1,7 +1,8 @@
 import axios from "axios";
 import swAlert from '@sweetalert/with-react';
+import { Navigate } from "react-router-dom";
 function Login(){
-
+    
     const submitHandler= e =>{
         e.preventDefault();
         
@@ -30,7 +31,7 @@ function Login(){
             )                    
             return;
         }
-        if(email!=='mciannello@gmail.com'|| password!=='react'){
+        if(email!=='challenge@alkemy.org'|| password!=='react'){
             swAlert(
                 <h2>Credenciales Inválidas</h2>
             )   ;   
@@ -38,24 +39,25 @@ function Login(){
             return;
         }
 
-        // axios
-        // .post('https://localhost:3000',{email, password})
-        // .then(res=>{
-        //     swAlert(
-        //      <h2>Perfecto, ingresaste correctamente!</h2>
-        //     )         
-        // const tokenRecibido = res.data.token;
-        // //  --> Se almacena el token en local storge
-        // localStorage.setItem('token', tokenRecibido);
+        axios
+        .post('http://challenge-react.alkemy.org',{email, password})
+        .then(res=>{
+            swAlert(
+             <h2>Perfecto, ingresaste correctamente!</h2>
+            )         
+        const tokenRecibido = res.data.token;
+        //  --> Se almacena el token en local storge
+        sessionStorage.setItem('token', tokenRecibido);
 
         
-        // })
-    // let token= localStorage.getItem('token');
-
+        })
+   
+        
     }
+    let token= sessionStorage.getItem('token');
 return (
     <>
-    {/*token && <Navigate to="listado"  */}
+    {token && <Navigate to="/listado"/>}
         <div className="container-sm">
         <h2>Formulario de Login</h2>
         <form onSubmit={submitHandler} className="mb-3">
