@@ -27,10 +27,10 @@ function Detalle (){
     return(
         <>
 
-{!token && <Navigate to="/"/>}
-{/* se puede agregar u spiner */}
-{!movie && <p>Cargando...</p>}
-{movie && 
+    {!token && <Navigate to="/"/>}
+    {/* se puede agregar u spiner */}
+    {!movie && <p>Cargando...</p>}
+    {movie && 
         <div className="container" >
             <h2>{movie.title}</h2>
            

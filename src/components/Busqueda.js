@@ -11,10 +11,10 @@ function Busqueda (){
         const keyword= e.currentTarget.keyword.value.trim();
         
         // console.log(keyword);
-    if (keyword.length < 4){
+    if (keyword.length === 4){
         swAlert(<h4>Debes escribir una palabra clave.</h4>);
-    }else if(keyword <4){
-        swAlert(<h2>Tienes ques escribir más de 4 caracteres</h2>);
+    }else if(keyword.length <3){
+        swAlert(<h2>Tienes ques escribir más de 3 caracteres</h2>);
     }else{
         // Limpio la consola
         e.currentTarget.keyword.value='';
