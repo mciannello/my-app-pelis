@@ -1,5 +1,5 @@
 import axios from "axios";
-import swAlert from '@sweetalert/with-react';
+import Swal from 'sweetalert2';
 import { Navigate } from "react-router-dom";
 function Login(){
     
@@ -13,39 +13,46 @@ function Login(){
         const regexEmail =/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
        
         if (email==='' || password===''){
-            swAlert(
-                <div>
-                    <h2>Los campos no pueden estar vacios</h2>
-                    <p>Debes ingresar los datos correspondiente para ingresar</p>
-                </div>
-            )            
+            Swal.fire({
+            icon:'Info',
+            title:'Los campos no pueden estar vacios',
+            text:'Debes ingresar los datos correspondiente para ingresar.'
+               
+        })            
             return;
         }
 
         if(email!=='' && !regexEmail.test(email)){
-            swAlert(
-                <div>
-                    <h2>Dirección inválida</h2>
-                    <p>Debes ingresar dirección de correo real</p>
-                </div>
-            )                    
+            Swal.fire({
+                icon:'Info',
+                title:'Dirección inválida',
+                text:'Debes ingresar dirección de correo real.'
+
+            })       
+
             return;
         }
         if(email!=='challenge@alkemy.org'|| password!=='react'){
-            swAlert(
-                <h2>Credenciales Inválidas</h2>
-            )   ;   
-               
+            Swal.fire({
+                icon:'error',
+                title:'Credenciales Inválidas',
+        
+
+            })    
+
             return;
         }
 
         axios
         .post('http://challenge-react.alkemy.org',{email, password})
         .then(res=>{
-            swAlert(
-             <h2>Perfecto, ingresaste correctamente!</h2>
-            )         
-        const tokenRecibido = res.data.token;
+            Swal.fire({
+                icon:'success',
+                title:'Perfecto, ingresaste correctamente',
+        
+
+            }) 
+           const tokenRecibido = res.data.token;
         //  --> Se almacena el token en local storge
         sessionStorage.setItem('token', tokenRecibido);
 

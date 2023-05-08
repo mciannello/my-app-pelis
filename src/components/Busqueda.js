@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import swAlert from '@sweetalert/with-react';
+import Swal from 'sweetalert2';
 
 function Busqueda (){
     // me permite navega a resultados a partir del bo´ton
@@ -12,9 +12,19 @@ function Busqueda (){
         
         // console.log(keyword);
     if (keyword.length === 4){
-        swAlert(<h4>Debes escribir una palabra clave.</h4>);
+        Swal.fire({
+            icon:'warning',
+            title:'Debes ingresar una palabra clave',
+    
+
+        }) 
     }else if(keyword.length <3){
-        swAlert(<h2>Tienes ques escribir más de 3 caracteres</h2>);
+        Swal.fire({
+            icon:'warning',
+            title:'Tienes que escribir mas de 3 caractéres',
+    
+
+        }) 
     }else{
         // Limpio la consola
         e.currentTarget.keyword.value='';
