@@ -1,12 +1,12 @@
 // falta el navigate
-import {Link, Navigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function Listado(addOrRemoveFromFavs){
 
-    let token= sessionStorage.getItem('token');
+    // let token= sessionStorage.getItem('token');
     const [movieList, setMovieList] =useState([]);
     
     useEffect(()=>{
@@ -29,7 +29,7 @@ function Listado(addOrRemoveFromFavs){
     // console.log(movieList)
 return(
     <>
-    {!token && <Navigate to="/"/>}
+    {/* {!token && <Navigate to="/"/>} */}
     <div className="row">
         {/* Estructura base */}
         {

@@ -1,9 +1,11 @@
-import { Link, Navigate } from "react-router-dom";
+// Falta Navigate
+
+import { Link } from "react-router-dom";
 import { useEffect,useState } from "react";
 import axios from "axios";
 
 function Resultados (addOrRemoveFromFavs){
-    let token=sessionStorage.getItem('token');
+    // let token=sessionStorage.getItem('token');
 
     let query= new URLSearchParams(window.location.search);
     let keyword=query.get('keyword');
@@ -27,7 +29,7 @@ function Resultados (addOrRemoveFromFavs){
 
  return(
     <>
-    {!token && <Navigate to="/"/>}
+    {/* {!token && <Navigate to="/"/>} */}
     <div className="row">
         <h2>Buscaste: <em>{keyword}</em></h2>
         {palabraClave.length===0 && <h3>No hay resultados.</h3>}

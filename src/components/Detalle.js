@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 
 function Detalle (){
-    let token=sessionStorage.getItem('token');
+    // let token=sessionStorage.getItem('token');
     let query= new URLSearchParams(window.location.search);
     // Guardo el movieID que viene de Listado guardado en URL
     let movieID=query.get('movieID');
@@ -27,7 +27,7 @@ function Detalle (){
     return(
         <>
 
-    {!token && <Navigate to="/"/>}
+    {/* {!token && <Navigate to="/"/>} */}
     {/* se puede agregar u spiner */}
     {!movie && <p>Cargando...</p>}
     {movie && 

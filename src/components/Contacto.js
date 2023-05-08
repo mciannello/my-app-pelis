@@ -1,10 +1,10 @@
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 function Contacto(){
-    let token= sessionStorage.getItem('token');
+    // let token= sessionStorage.getItem('token');
     return(
         <>
-          {!token && <Navigate to="/"/>}
+          {/* {!token && <Navigate to="/"/>} */}
         <h1>Sección Contacto</h1>
         </>
     )

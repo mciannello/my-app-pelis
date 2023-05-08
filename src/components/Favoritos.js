@@ -1,11 +1,11 @@
 
-import { Navigate } from "react-router-dom"
+// import { Navigate } from "react-router-dom"
 function Favoritos({addOrRemoveFromFavs, guardado}){
-    let token= sessionStorage.getItem('token');
+    // let token= sessionStorage.getItem('token');
     return(
         <>
         <h2> Sección Favoritos</h2>
-        {!token && <Navigate to="/"/>}
+        {/* {!token && <Navigate to="/"/>} */}
     <div className="row">
       {!guardado.favorites.length && <h5 className="col-12 text-danger">No se pudo encontrar nada favoritos</h5>}
         {
