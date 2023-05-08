@@ -1,9 +1,12 @@
-
+import { Navigate } from "react-router-dom";
 
 function Contacto(){
-
+    let token= sessionStorage.getItem('token');
     return(
-        <h1>AHHHHHHHHHH</h1>
+        <>
+          {!token && <Navigate to="/"/>}
+        <h1>Sección Contacto</h1>
+        </>
     )
 }
 

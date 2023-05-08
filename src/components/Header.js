@@ -21,7 +21,7 @@ function Header({guardado}){
                         <li className="nav-item dark">
                         <Link className="nav-link px-2 text-white" to="/favoritos">Favoritos❤️ </Link>
                         </li>
-                        <li className="nav-item dark">
+                        <li className="nav-item dark d-flex align-items-center">
                         <span className="text-info px-2 ">
                           {guardado.favorites.length>0&&  <>Pelis en favoritos: {guardado.favorites.length}</>}
                             </span> 
