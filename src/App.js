@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import Resultados from "./components/Resultados";
 import Favoritos from "./components/Favoritos";
 // Estilos
-import './css/bootstrap.min.css'
+// import './css/bootstrap.min.css'
 import './css/App.css'
 
 
