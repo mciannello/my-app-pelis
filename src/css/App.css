@@ -1,3 +1,17 @@
-li{
+/* li{
     list-style: none;
+} */
+
+.favorite-btn{
+    width: 40px;
+    height: 40px;
+    background-color:rgb(255, 255, 255);
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
 }
