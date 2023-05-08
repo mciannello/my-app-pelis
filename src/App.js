@@ -1,6 +1,6 @@
 // Librerias
 import { Routes, Route } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 // Componentes
 import Contacto from './components/Contacto';
 import Listado from './components/Listado';
@@ -17,7 +17,7 @@ import './css/App.css'
 
 
 function App  () {
- 
+
  
   // console.log(tempMoviesInFavs)
     const addOrRemoveFromFavs=e=>{
@@ -49,6 +49,7 @@ function App  () {
       if (!movieIsInArray){
         tempMoviesInFavs.push(movieData);
         localStorage.setItem('favs', JSON.stringify(tempMoviesInFavs));
+        setFavorites(tempMoviesInFavs);
         console.log('se agrego la película');
       }else{
         let moviesLeft= tempMoviesInFavs.filter(oneMovie=>{
@@ -56,10 +57,22 @@ function App  () {
         });
      
       localStorage.setItem('favs', JSON.stringify(moviesLeft));
+      setFavorites(moviesLeft)
       console.log('se eliminó la Peli');
       }
 
     }
+    // Agregaar y QUitar Favss
+    const [favorites, setFavorites] = useState([]);
+
+    useEffect(() => {
+        const favsInLocal=localStorage.getItem('favs')
+    
+        if(favsInLocal !== null) {
+            const favsArray=JSON.parse(favsInLocal);
+            setFavorites(favsArray)
+        }
+    },[setFavorites])
   return (
   <div className="container-fluid">
     <Header />
@@ -68,9 +81,8 @@ function App  () {
       <Route path="listado"  element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs}/> } />
       <Route path="contacto"  element={ <Contacto /> }/>
       <Route path="detalle"  element={ <Detalle /> }/>
-      {/* Agregar addOrRemoveFromFavs={addOrRemoveFromFavs} a Resultados */}
-      <Route path="resultados"  element={ <Resultados /> }/>
-      <Route path="favoritos"  element={ <Favoritos /> }/>
+      <Route path="resultados"  element={ <Resultados addOrRemoveFromFavs={addOrRemoveFromFavs}/> }/>
+      <Route path="favoritos"  element={ <Favoritos guardado={{favorites}} addOrRemoveFromFavs={addOrRemoveFromFavs}/> }/>
 
     </Routes>
     <Footer/>
