@@ -77,8 +77,8 @@ function App  () {
   <div className="container-fluid">
     <Header  guardado={{favorites}}/>
     <Routes>
-      <Route path="/" element={ <Login /> }/>
-      <Route path="listado"  element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs}/> } />
+      {/* <Route path="/" element={ <Login /> }/> --> editado para que funcione */}
+      <Route path="/"  element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs}/> } />
       <Route path="contacto"  element={ <Contacto /> }/>
       <Route path="detalle"  element={ <Detalle /> }/>
       <Route path="resultados"  element={ <Resultados addOrRemoveFromFavs={addOrRemoveFromFavs}/> }/>
