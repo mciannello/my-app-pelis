@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Busqueda from "./Busqueda";
 
-function Header(){
+function Header({guardado}){
     return(
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
@@ -20,6 +20,11 @@ function Header(){
                         </li>
                         <li className="nav-item dark">
                         <Link className="nav-link px-2 text-white" to="/favoritos">Favoritos❤️ </Link>
+                        </li>
+                        <li className="nav-item dark">
+                        <span className="text-info px-2 ">
+                          {guardado.favorites.length>0&&  <>Pelis en favoritos: {guardado.favorites.length}</>}
+                            </span> 
                         </li>
                         </ul>
                     </div>

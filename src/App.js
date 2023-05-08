@@ -75,7 +75,7 @@ function App  () {
     },[setFavorites])
   return (
   <div className="container-fluid">
-    <Header />
+    <Header  guardado={{favorites}}/>
     <Routes>
       <Route path="/" element={ <Login /> }/>
       <Route path="listado"  element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs}/> } />
