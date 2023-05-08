@@ -2,7 +2,7 @@
 import {Link, Navigate} from 'react-router-dom';
 import { useEffect,useState } from 'react';
 import axios from 'axios';
-import swAlert from '@sweetalert/with-react';
+import Swal from 'sweetalert2';
 
 function Listado(addOrRemoveFromFavs){
 
@@ -18,7 +18,12 @@ function Listado(addOrRemoveFromFavs){
         })
         // catch captura los errores
         .catch(error=>{
-            swAlert(<h2>Hubo errores, intenta más tarde.</h2>)
+            Swal.fire({
+                icon:'error',
+                title:'Hubo errores, intente más tarde.',
+        
+    
+            }) 
         })
     }, [setMovieList]);
     // console.log(movieList)
